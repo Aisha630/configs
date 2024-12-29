@@ -12,3 +12,4 @@ rstudio/
 wireshark/
 .zcompdump*
 **/*.swp
+.DS_Store
