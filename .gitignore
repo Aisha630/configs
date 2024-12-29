@@ -1,0 +1,13 @@
+.mono/
+code-server/
+.vscode/
+configstore/
+flutter/
+gcloud/
+ghc/
+gtk*/
+qBittorrent/
+rclone/
+rstudio/
+wireshark/
+.zcompdump*
