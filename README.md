@@ -2,7 +2,7 @@
 
 This repository houses my personalized terminal setup, encompassing Zsh shell configurations, Kitty terminal emulator settings, Neofetch system information display customizations, and a bespoke Oh My Posh theme. The objective is to achieve a harmonious blend of aesthetics, functionality, and performance for an optimized terminal experience.
 
-To bring this config to any ssh session, we utilize [xxh](https://github.com/xxh/xxh.git).
+To bring this config to any ssh session, we can utilize [xxh](https://github.com/xxh/xxh.git).
 
 ---
 
@@ -439,7 +439,6 @@ All icons are sourced from [Nerd fonts](https://www.nerdfonts.com/cheat-sheet).
 
 - [Neofetch GitHub Repository](https://github.com/dylanaraps/neofetch)
 - [Customization Guide](https://github.com/dylanaraps/neofetch/wiki/Customizing-Info)
-
 
 ## **LSD Utility**
 
