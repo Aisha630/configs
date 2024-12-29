@@ -11,3 +11,4 @@ rclone/
 rstudio/
 wireshark/
 .zcompdump*
+**/*.swp

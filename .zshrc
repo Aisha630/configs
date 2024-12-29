@@ -1,5 +1,3 @@
-
-
 source <(fzf --zsh)
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=yellow,fg=black,bold'
 

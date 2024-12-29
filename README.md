@@ -45,6 +45,8 @@ Before removing Oh My Zsh, I identified certain plugins that were invaluable for
 
 I manually copied these plugins into my custom plugins folder (`~/.zsh/plugins/`) and ensured they worked independently.
 
+For these two plugins, I had to change the `clipcopy` command in their respective `.zsh` files to `pbcopy` for my Mac. 
+
 ---
 
 ### Current Setup: Lean and Fast
