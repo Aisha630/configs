@@ -211,15 +211,6 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "  {{ .Context }} ",
-          "foreground": "#227fb9",
-          "type": "docker",
-          "style": "diamond"
-        },
-        {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": "  {{ .Project }} :: {{.Account}} ",
           "foreground": "#F4B400",
           "type": "gcp",
