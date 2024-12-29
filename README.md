@@ -1,6 +1,8 @@
 # 🖥️ My Custom Terminal Configuration
 
-This repository houses my personalized terminal setup, encompassing Zsh shell configurations, Kitty terminal emulator settings, Neofetch system information display customizations, and a bespoke Oh My Posh theme. The objective is to achieve a harmonious blend of aesthetics, functionality, and performance for an optimized terminal experience
+This repository houses my personalized terminal setup, encompassing Zsh shell configurations, Kitty terminal emulator settings, Neofetch system information display customizations, and a bespoke Oh My Posh theme. The objective is to achieve a harmonious blend of aesthetics, functionality, and performance for an optimized terminal experience.
+
+To bring this config to any ssh session, we utilize [xxh](https://github.com/xxh/xxh.git).
 
 ---
 
