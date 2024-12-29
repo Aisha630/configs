@@ -190,6 +190,8 @@ This separation ensures that login-only settings do not clutter the interactive 
 
 #### Features of My Oh My Posh Theme (`kushal.omp.json`)
 
+All icons are sourced from [Nerd fonts](https://www.nerdfonts.com/cheat-sheet).
+
 1. **Transient Prompt**:
 
    - Displays a minimal secondary prompt after command execution.
