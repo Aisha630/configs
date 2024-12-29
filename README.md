@@ -18,7 +18,7 @@ To bring this config to any ssh session, we can utilize [xxh](https://github.com
 I chose Zsh for its flexibility and modern features, making it an excellent choice for developers and power users.
 
 ---
-
+![Screenshot](https://drive.google.com/uc?export=view&id=1TWSRzmv2hiZpu4Q5z-doyHypL4yA2XyO)
 ## 🚀 Journey to the Current Setup
 
 ### Initial Setup: Oh My Zsh
