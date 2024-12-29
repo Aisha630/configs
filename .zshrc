@@ -33,6 +33,7 @@ alias s="kitten ssh"
 alias fzf='fzf --preview="bat --color=always {}"'
 alias cpa="copypath"
 alias cf="copyfile"
+alias ls="lsd"
 alias la="ls -la"
 alias ..="cd .."
 alias ...="cd ../.."
@@ -60,3 +61,5 @@ alias gcp="git cherry-pick"
 neofetch
 
 eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/kushal.omp.json)"
+
+export LS_COLORS="di=34:ln=31:so=31:pi=33:ex=31:bd=31:cd=111:su=31:sg=31:tw=31:ow=31:fi=35:*.json=36:*.txt=10:*png=33:*jpg=33:*jpeg=33"

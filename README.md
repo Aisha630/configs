@@ -47,7 +47,7 @@ Before removing Oh My Zsh, I identified certain plugins that were invaluable for
 
 I manually copied these plugins into my custom plugins folder (`~/.zsh/plugins/`) and ensured they worked independently.
 
-For these two plugins, I had to change the `clipcopy` command in their respective `.zsh` files to `pbcopy` for my Mac. 
+For these two plugins, I had to change the `clipcopy` command in their respective `.zsh` files to `pbcopy` for my Mac.
 
 ---
 
@@ -440,8 +440,151 @@ All icons are sourced from [Nerd fonts](https://www.nerdfonts.com/cheat-sheet).
 - [Neofetch GitHub Repository](https://github.com/dylanaraps/neofetch)
 - [Customization Guide](https://github.com/dylanaraps/neofetch/wiki/Customizing-Info)
 
+
+## **LSD Utility**
+
+The **LSD** (LSDeluxe) utility is a modern replacement for the traditional `ls` command. It provides enhanced functionality with features like colored output, icons, tree views, and improved formatting, making directory listings more informative and visually appealing.
+
 ---
 
-#### Why Use Neofetch?
+#### Why I Use LSD
 
-Neofetch provides a quick snapshot of your system's essential metrics, making it a great addition to your terminal setup. Combined with ASCII art and progress bars, it adds a professional and stylish touch to your terminal environment.
+- **Enhanced Readability**: Adds colors and icons for files and directories.
+- **Modern Design**: Clean and aesthetically pleasing output.
+- **Customizable**: Fully configurable with support for themes, colors, and more.
+- **Performance**: Built with Rust, it is fast and lightweight.
+
+---
+
+#### Key Features in My Setup
+
+1. **Color Customization**:
+
+   - Different colors for files, directories, and file types (e.g., `.json` files).
+   - Configured through `~/.config/lsd/colors.yaml`.
+2. **Icons for File Types**:
+
+   - Icons added next to file and directory names for quick identification.
+   - Supports various icon themes.
+3. **Tree View**:
+
+   - Lists directories in a tree format using the `--tree` flag.
+4. **Improved Output**:
+
+   - Human-readable file sizes with the `--long` flag.
+   - Date and time formatting for file metadata.
+
+---
+
+#### Installation
+
+1. **Install LSD**:
+
+   - **macOS**:
+     ```bash
+     brew install lsd
+     ```
+   - **Linux**:
+     - Using a package manager (Debian/Ubuntu):
+       ```bash
+       sudo apt install lsd
+       ```
+     - Or via `cargo` (Rust's package manager):
+       ```bash
+       cargo install lsd
+       ```
+2. **Verify Installation**:
+
+   ```bash
+   lsd --version
+   ```
+
+---
+
+#### Configuration
+
+1. **Set Up Configuration Files**:
+
+   - **Create the Config Directory**:
+     ```bash
+     mkdir -p ~/.config/lsd
+     ```
+   - **Add a Configuration File**:
+     ```yaml
+     # ~/.config/lsd/config.yaml
+     color:
+       when: always
+       theme: default
+
+     icons:
+       when: always
+       theme: fancy
+
+     classic: false
+     ```
+2. **Set Colors for File Types**:
+
+   - **Add `colors.yaml`**:
+     ```yaml
+     # ~/.config/lsd/colors.yaml
+     file:
+       normal: white
+       symlink: cyan
+       broken: red
+
+     dir:
+       normal: blue
+       empty: light_blue
+
+     exe:
+       normal: green
+     ```
+3. **Alias `ls` to `lsd`**:
+   Add this line to your `.zshrc` to replace `ls` with `lsd`:
+
+   ```zsh
+   alias ls='lsd'
+   ```
+
+   Reload your shell:
+
+   ```bash
+   source ~/.zshrc
+   ```
+
+---
+
+#### Usage Examples
+
+1. **Basic Listing**:
+
+   ```bash
+   lsd
+   ```
+2. **Detailed Listing**:
+
+   ```bash
+   lsd --long
+   ```
+3. **Tree View**:
+
+   ```bash
+   lsd --tree --depth 2
+   ```
+4. **Show Hidden Files**:
+
+   ```bash
+   lsd --all
+   ```
+5. **Combine Flags**:
+
+   ```bash
+   lsd --long --tree --all
+   ```
+
+---
+
+#### Documentation
+
+- [LSD GitHub Repository](https://github.com/lsd-rs/lsd)
+- [LSD Configuration Guide](https://github.com/lsd-rs/lsd#configuration)
