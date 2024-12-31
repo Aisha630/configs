@@ -13,3 +13,5 @@ wireshark/
 .zcompdump*
 **/*.swp
 .DS_Store
+gh/
+znt/

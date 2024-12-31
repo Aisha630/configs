@@ -24,7 +24,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # Aliases
-alias python="python3"
+alias python="python3.12"
 alias pip="pip3"
 alias c="clear"
 alias n="neofetch"
@@ -58,7 +58,22 @@ alias grs="git reset --soft"
 alias gcp="git cherry-pick"
 alias t="tree -L 2"
 alias lst="ls --depth 2"
-alias source="src"
+alias src="source"
 
 neofetch
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
