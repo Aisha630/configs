@@ -3,5 +3,5 @@
 # copyfile <file>
 function copyfile {
   emulate -L zsh
-  clipcopy $1
+  pbcopy $1
 }

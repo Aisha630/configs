@@ -9,7 +9,7 @@ function copypath {
 
   # Copy the absolute path without resolving symlinks
   # If clipcopy fails, exit the function with an error
-  print -n "${file:a}" | clipcopy || return 1
+  print -n "${file:a}" | pbcopy || return 1
 
   echo ${(%):-"%B${file:a}%b copied to clipboard."}
 }

@@ -18,7 +18,9 @@ To bring this config to any ssh session, we can utilize [xxh](https://github.com
 I chose Zsh for its flexibility and modern features, making it an excellent choice for developers and power users.
 
 ---
+
 ![Screenshot](https://drive.google.com/uc?export=view&id=1TWSRzmv2hiZpu4Q5z-doyHypL4yA2XyO)
+
 ## 🚀 Journey to the Current Setup
 
 ### Initial Setup: Oh My Zsh
@@ -63,33 +65,119 @@ The result? **A terminal that is significantly faster without compromising on fu
 
 ---
 
-### 🛠️ Features
+### Plugins Overview
 
-#### Plugins
+**1. Syntax Highlighting**
 
-1. **Syntax Highlighting**:
+- **Location**: `~/.config/plugins/zsh-syntax-highlighting`
+- **Features**:
+  - Provides real-time syntax highlighting for commands, improving readability and reducing errors.
 
-   - Provides real-time syntax highlighting for commands.
-   - Plugin location: `~/.zsh/plugins/zsh-syntax-highlighting`
-2. **Autosuggestions**:
+---
 
-   - Suggests commands as you type based on your history.
-   - Plugin location: `~/.zsh/plugins/zsh-autosuggestions`
-3. **Copy File and Path**:
+**2. Autosuggestions**
 
-   - `copyfile`: Copies file contents to the clipboard.
-   - `copypath`: Copies paths to the clipboard.
-4. **History Substring Search**:
+- **Location**: `~/.config/plugins/zsh-autosuggestions`
+- **Features**:
+  - Suggests commands as you type based on your command history, saving time and effort.
 
-   - Allows searching through command history using substrings.
-   - Plugin location: `~/.zsh/plugins/zsh-history-substring-search`
+---
 
-#### Aliases
+**3. History Substring Search**
 
-- `c`: Clears the terminal.
-- `n`: Runs `neofetch` to display system information.
-- `fzf`: A powerful fuzzy finder with a preview feature (`bat`).
-- `python` → `python3` and `pip` → `pip3`.
+- **Location**: `~/.config/plugins/zsh-history-substring-search`
+- **Features**:
+  - Enables searching through command history using substrings.
+  - Makes it easy to recall and reuse past commands.
+
+---
+
+**4. Copy File and Path**
+
+- **Locations**:
+  - `~/.config/plugins/copyfile`
+  - `~/.config/plugins/copypath`
+- **Features**:
+  - `copyfile`: Copies file contents directly to the clipboard.
+  - `copypath`: Copies file paths to the clipboard.
+
+---
+
+**5. FZF**
+
+- **Location**: `~/.config/plugins/fzf`
+- **Features**:
+  - Provides a fast, interactive fuzzy search for files, directories, and commands.
+  - Integrates seamlessly with Zsh for better navigation.
+
+---
+
+**6. Safe Paste**
+
+- **Location**: `~/.config/plugins/safe-paste`
+- **Features**:
+  - Prevents accidental execution of commands when pasting into the terminal.
+  - Enhances security by requiring confirmation before running pasted commands.
+
+---
+
+**7. Sudo**
+
+- **Location**: `~/.config/plugins/sudo`
+- **Features**:
+  - Allows quick appending of `sudo` to the beginning of a command using the `ESC` key by hitting it twice.
+
+---
+
+**8. Web Search**
+
+- **Location**: `~/.config/plugins/web-search`
+- **Features**:
+  - Enables performing quick web searches from the terminal.
+
+---
+
+**9. Z (Directory Jumper)**
+
+- **Location**: `~/.config/plugins/z`
+- **Features**:
+  - Tracks and provides shortcuts to frequently used directories.
+  - Allows quick navigation to directories based on usage history.
+
+---
+
+**10. Auto Notify**
+
+- **Location**: `~/.config/plugins/auto-notify`
+- **Features**:
+  - Sends desktop notifications upon command completion, especially for long-running commands.
+
+---
+
+**11. Colorize**
+
+- **Location**: `~/.config/plugins/colorize`
+- **Features**:
+  - Adds color to terminal outputs for better readability.
+
+---
+
+**12. Interactive CD**
+
+- **Location**: `~/.config/plugins/zsh-interactive-cd`
+- **Features**:
+  - Enhances directory navigation with interactive and intuitive features.
+  - Provides a visual preview of available directories.
+
+---
+
+**13. Navigation Tools**
+
+- **Location**: `~/.config/plugins/zsh-navigation-tools`
+- **Features**:
+  - Offers advanced navigation capabilities within Zsh, such as quick file browsing and selection.
+
+---
 
 ## 🔧 Installation
 
