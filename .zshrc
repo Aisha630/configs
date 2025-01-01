@@ -1,4 +1,6 @@
 source <(fzf --zsh)
+eval "$(zoxide init zsh)"
+autoload -U compinit && compinit
 
 # Source all plugins in the plugins directory
 for plugin in ~/.zsh/plugins/*; do
@@ -59,6 +61,7 @@ alias gcp="git cherry-pick"
 alias t="tree -L 2"
 alias lst="ls --depth 2"
 alias src="source"
+alias e="exit"
 
 neofetch
 
@@ -76,4 +79,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+setopt inc_append_history
+setopt share_history
 
