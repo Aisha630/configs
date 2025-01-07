@@ -137,9 +137,9 @@ The result? **A terminal that is significantly faster without compromising on fu
 
 ---
 
-**9. Z (Directory Jumper)**
+**9. Zoxide (Directory Jumper)**
 
-- **Location**: `~/.config/plugins/z`
+- **Location**: Install through `brew install zoxide`
 - **Features**:
   - Tracks and provides shortcuts to frequently used directories.
   - Allows quick navigation to directories based on usage history.
