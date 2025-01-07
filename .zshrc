@@ -1,3 +1,4 @@
+source ~/.zprofile
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 autoload -U compinit && compinit
@@ -59,7 +60,7 @@ alias grh="git reset --hard"
 alias grs="git reset --soft"
 alias gcp="git cherry-pick"
 alias t="tree -L 2"
-alias lst="ls --depth 2"
+alias lst="ls -- tree --depth 2"
 alias src="source"
 alias e="exit"
 
@@ -82,4 +83,5 @@ unset __conda_setup
 
 setopt inc_append_history
 setopt share_history
-
+setopt hist_ignore_dups     # Ignore duplicate commands in history
+setopt hist_ignore_all_dups 
