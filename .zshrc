@@ -1,7 +1,5 @@
 source ~/.zprofile
-source <(fzf --zsh)
-eval "$(zoxide init zsh)"
-autoload -U compinit && compinit
+autoload -U compinit && compinit -C
 
 # Source all plugins in the plugins directory
 for plugin in ~/.zsh/plugins/*; do
@@ -27,8 +25,8 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # Aliases
-alias python="python3.12"
-alias pip="pip3"
+# alias python="python3.12"
+# alias pip="pip3"
 alias c="clear"
 alias n="neofetch"
 alias s="kitten ssh"
@@ -63,6 +61,7 @@ alias t="tree -L 2"
 alias lst="ls -- tree --depth 2"
 alias src="source"
 alias e="exit"
+alias z='zoxide query --'
 
 neofetch
 
@@ -81,7 +80,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-setopt inc_append_history
 setopt share_history
 setopt hist_ignore_dups     # Ignore duplicate commands in history
-setopt hist_ignore_all_dups 
+eval "$(fzf --zsh)"
+eval "$(zoxide init zsh)"
+
+
+

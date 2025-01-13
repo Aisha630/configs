@@ -6,10 +6,12 @@
     "background": "transparent"
   },
   "transient_prompt": {
-    "template": "\ue780 ",
+    "newline": true,
+    "template": " \uf252 {{ .Segments.TimeLastCommand.FormattedMs }} \n \ue780 ",
     "foreground": "#dabd17",
     "background": "transparent"
   },
+
   "console_title_template": "{{ if .Root }}root @ {{ end }}{{ .Shell }} in {{ .Folder }}",
   "blocks": [
     {
@@ -18,22 +20,12 @@
       "segments": [
         {
           "properties": {
-            "alpine": "\uf300",
             "arch": "\uf303",
             "cache_duration": "none",
-            "centos": "\uf304",
             "debian": "\uf306",
-            "elementary": "\uf309",
-            "fedora": "\uf30a",
-            "gentoo": "\uf30d",
             "linux": "\ue712",
             "macos": "\ue711",
-            "manjaro": "\uf312",
-            "mint": "\uf30f",
-            "opensuse": "\uf314",
-            "raspbian": "\uf315",
-            "ubuntu": "\uf31c",
-            "windows": "\ue70f"
+            "ubuntu": "\uf31c"
           },
           "leading_diamond": "\ue0b2",
           "trailing_diamond": "\ue0b0",
@@ -190,10 +182,10 @@
         },
         {
           "properties": {
-            "cache_duration": "none",
             "style": "roundrock",
             "threshold": 0
           },
+          "alias": "TimeLastCommand",
           "trailing_diamond": "\ue0b4",
           "template": " \uf252 {{ .FormattedMs }} ",
           "foreground": "#D6DEEB",
