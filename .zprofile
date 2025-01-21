@@ -1,3 +1,5 @@
+typeset -U path
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(oh-my-posh init zsh --config /Users/aisha/.config/oh-my-posh-theme/kushal.omp.json)"
 

@@ -1,11 +1,19 @@
 source ~/.zprofile
-autoload -U compinit && compinit -C
+
+if [ ! -d ~/.zsh/plugins ]; then 
+  mkdir -p ~/.zsh && cd ~/.zsh
+  git clone  --filter=blob:none --no-checkout https://github.com/Aisha630/configs.git .
+  git sparse-checkout init --cone
+  git sparse-checkout set plugins
+  git checkout main
+fi
 
 # Source all plugins in the plugins directory
 for plugin in ~/.zsh/plugins/*; do
   plugin_name=$(basename "$plugin")
 
-  if [[ -d "$plugin" && "$plugin_name" != "zsh-history-substring-search" ]]; then
+  if [[ -d "$plugin" && "$plugin_name" != "zsh-history-substring-search" && "$plugin_name" != "ez-compinit" ]]; then
+  echo $plugin
     if [[ -f "$plugin/$plugin_name.plugin.zsh" ]]; then
       source "$plugin/$plugin_name.plugin.zsh"
     elif [[ -f "$plugin/init.zsh" ]]; then
@@ -20,13 +28,23 @@ done
 
 # This plugin should be sourced last according to the author. Otherwise, it may not work as expected. Refer to the plugin's README for more information.
 source ~/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zsh/plugins/ez-compinit/ez-compinit.plugin.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
+zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
+zstyle ":completion:*:descriptions" format "[%d]"
+zstyle ":completion:*:git-checkout:*" sort false
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^E" edit-command-line
+
 # Aliases
-# alias python="python3.12"
-# alias pip="pip3"
+function cc() python -c "from math import *; print($*)"
+alias cc="noglob cc"
 alias c="clear"
 alias n="neofetch"
 alias s="kitten ssh"
@@ -41,7 +59,7 @@ alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
-alias gl="git log"
+alias gl="git log"j
 alias gco="git checkout"
 alias gcb="git checkout -b"
 alias gcm="git commit -m"
@@ -81,8 +99,13 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 setopt share_history
-setopt hist_ignore_dups     # Ignore duplicate commands in history
+setopt hist_ignore_dups  
+setopt multios
+setopt rm_star_silent
+setopt auto_cd
+
 eval "$(fzf --zsh)"
+zstyle ":fzf-tab:complete:cd:*" fzf-preview 'lsd -1 --group-dirs-first --color=always $realpath'
 eval "$(zoxide init zsh)"
 
 
