@@ -13,7 +13,6 @@ for plugin in ~/.zsh/plugins/*; do
   plugin_name=$(basename "$plugin")
 
   if [[ -d "$plugin" && "$plugin_name" != "zsh-history-substring-search" && "$plugin_name" != "ez-compinit" ]]; then
-  echo $plugin
     if [[ -f "$plugin/$plugin_name.plugin.zsh" ]]; then
       source "$plugin/$plugin_name.plugin.zsh"
     elif [[ -f "$plugin/init.zsh" ]]; then
