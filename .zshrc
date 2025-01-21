@@ -1,33 +1,41 @@
-source ~/.zprofile
+typeset -U PATH
 
-if [ ! -d ~/.zsh/plugins ]; then 
-  mkdir -p ~/.zsh && cd ~/.zsh
+function safe_source() {
+  [ -f "$1" ] && source "$1"
+}
+
+safe_source $HOME/.zprofile
+
+if [ ! -d $HOME/.zsh/plugins ]; then 
+  mkdir -p $HOME/.zsh && cd $HOME/.zsh
   git clone  --filter=blob:none --no-checkout https://github.com/Aisha630/configs.git .
   git sparse-checkout init --cone
   git sparse-checkout set plugins
   git checkout main
 fi
 
-# Source all plugins in the plugins directory
-for plugin in ~/.zsh/plugins/*; do
+# the readme for this plugin says to source it before other plugins
+safe_source $HOME/.zsh/plugins/ez-compinit/ez-compinit.plugin.zsh
+
+# Safe_source all plugins in the plugins directory
+for plugin in $HOME/.zsh/plugins/*; do
   plugin_name=$(basename "$plugin")
 
   if [[ -d "$plugin" && "$plugin_name" != "zsh-history-substring-search" && "$plugin_name" != "ez-compinit" ]]; then
     if [[ -f "$plugin/$plugin_name.plugin.zsh" ]]; then
-      source "$plugin/$plugin_name.plugin.zsh"
+      safe_source "$plugin/$plugin_name.plugin.zsh"
     elif [[ -f "$plugin/init.zsh" ]]; then
-      source "$plugin/init.zsh"
+      safe_source "$plugin/init.zsh"
     elif [[ -f "$plugin/$plugin_name.zsh" ]]; then
-      source "$plugin/$plugin_name.zsh"
+      safe_source "$plugin/$plugin_name.zsh"
     else
-      echo "No suitable file to source in $plugin_name"
+      echo "No suitable file to safe_source in $plugin_name"
     fi
   fi
 done
 
-# This plugin should be sourced last according to the author. Otherwise, it may not work as expected. Refer to the plugin's README for more information.
-source ~/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.zsh/plugins/ez-compinit/ez-compinit.plugin.zsh
+# This plugin should be safe_sourced last according to the author. Otherwise, it may not work as expected. Refer to the plugin's README for more information.
+safe_source $HOME/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
