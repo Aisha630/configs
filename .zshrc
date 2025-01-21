@@ -20,17 +20,10 @@ safe_source $HOME/.zsh/plugins/ez-compinit/ez-compinit.plugin.zsh
 # Safe_source all plugins in the plugins directory
 for plugin in $HOME/.zsh/plugins/*; do
   plugin_name=$(basename "$plugin")
-
   if [[ -d "$plugin" && "$plugin_name" != "zsh-history-substring-search" && "$plugin_name" != "ez-compinit" ]]; then
-    if [[ -f "$plugin/$plugin_name.plugin.zsh" ]]; then
       safe_source "$plugin/$plugin_name.plugin.zsh"
-    elif [[ -f "$plugin/init.zsh" ]]; then
       safe_source "$plugin/init.zsh"
-    elif [[ -f "$plugin/$plugin_name.zsh" ]]; then
       safe_source "$plugin/$plugin_name.zsh"
-    else
-      echo "No suitable file to safe_source in $plugin_name"
-    fi
   fi
 done
 
@@ -86,7 +79,6 @@ alias t="tree -L 2"
 alias lst="ls -- tree --depth 2"
 alias src="source"
 alias e="exit"
-alias z='zoxide query --'
 
 neofetch
 
