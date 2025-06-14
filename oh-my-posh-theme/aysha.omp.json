@@ -174,12 +174,8 @@
           "background": "#BEADFA",
           "type": "status",
           "style": "diamond",
-          "foreground_templates": [
-            "{{ if gt .Code 0 }}#D6DEEB{{ end }}"
-          ],
-          "background_templates": [
-            "{{ if gt .Code 0 }}#E44141{{ end }}"
-          ]
+          "foreground_templates": ["{{ if gt .Code 0 }}#D6DEEB{{ end }}"],
+          "background_templates": ["{{ if gt .Code 0 }}#E44141{{ end }}"]
         },
         {
           "properties": {
@@ -222,7 +218,7 @@
           "properties": {
             "cache_duration": "none"
           },
-          "leading_diamond": "\uf109 ",
+          "leading_diamond": "\uf109  ",
           "template": "{{ if .SSHSession }}{{ end }}{{ .UserName }}",
           "foreground": "#d964a0",
           "type": "session",
