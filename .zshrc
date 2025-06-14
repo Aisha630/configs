@@ -6,18 +6,39 @@ function safe_source() {
 
 safe_source $HOME/.zprofile
 
-if [ ! -d $HOME/.zsh/plugins ]; then 
-  mkdir -p $HOME/.zsh && cd $HOME/.zsh
-  git clone  --filter=blob:none --no-checkout https://github.com/Aisha630/configs.git .
-  git sparse-checkout init --cone
-  git sparse-checkout set plugins
-  git checkout main
-fi
+function copyfile {
+  local file="${1}"
+  [[ $file = /* ]] || file="$PWD/$file"
+
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    cat "$file" | pbcopy
+  elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    cat "$file" | xclip -selection clipboard
+  fi
+
+  echo "Contents of ${file} copied to clipboard."
+}
+
+function copypath {
+  local file="${1:-.}"
+  [[ $file = /* ]] || file="$PWD/$file"
+
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    print -n "${file:a}" | pbcopy
+  elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    echo -n "${file:a}" | xclip -selection clipboard
+  fi
+  echo "Absolute path ${file:a} copied to clipboard."
+}
+
 
 # the readme for this plugin says to source it before other plugins
 safe_source $HOME/.zsh/plugins/ez-compinit/ez-compinit.plugin.zsh
 
-# Safe_source all plugins in the plugins directory
+eval "$(fzf --zsh)"
+zstyle ":fzf-tab:complete:cd:*" fzf-preview 'lsd -1 --group-dirs first --color=always $realpath'
+eval "$(zoxide init zsh)"
+
 for plugin in $HOME/.zsh/plugins/*; do
   plugin_name=$(basename "$plugin")
   if [[ -d "$plugin" && "$plugin_name" != "zsh-history-substring-search" && "$plugin_name" != "ez-compinit" ]]; then
@@ -47,7 +68,7 @@ function cc() python -c "from math import *; print($*)"
 alias cc="noglob cc"
 alias c="clear"
 alias n="neofetch"
-alias s="kitten ssh"
+alias ss="kitten ssh"
 alias fzf='fzf --preview="bat --color=always {}"'
 alias cpa="copypath"
 alias cf="copyfile"
@@ -59,7 +80,7 @@ alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
-alias gl="git log"j
+alias gl="git log"
 alias gco="git checkout"
 alias gcb="git checkout -b"
 alias gcm="git commit -m"
@@ -75,37 +96,21 @@ alias grs="git reset"
 alias grh="git reset --hard"
 alias grs="git reset --soft"
 alias gcp="git cherry-pick"
-alias t="tree -L 2"
-alias lst="ls -- tree --depth 2"
+alias tre="tree -L 2"
 alias src="source"
 alias e="exit"
+alias tl="tmux ls"
+alias ta="tmux attach -t"
+alias tn="tmux new -s"
+alias tk="tmux kill-session -t"
+alias tks="tmux kill-server"
 
 neofetch
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 setopt share_history
 setopt hist_ignore_dups  
 setopt multios
 setopt rm_star_silent
 setopt auto_cd
-
-eval "$(fzf --zsh)"
-zstyle ":fzf-tab:complete:cd:*" fzf-preview 'lsd -1 --group-dirs-first --color=always $realpath'
-eval "$(zoxide init zsh)"
-
-
+setopt NO_NOMATCH
 
